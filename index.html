@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Expenses Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🏠 Home Expenses Tracker</h1>
+  </header>
+  <main>
+    <section class="form-section">
+      <h2>Add Expense</h2>
+      <form id="expense-form">
+        <input type="text" id="person" placeholder="Person Name" required />
+        <select id="category" required>
+          <option value="">Select Category</option>
+          <option>Rent / Mortgage</option>
+          <option>Groceries</option>
+          <option>Electricity Bill</option>
+          <option>Water Bill</option>
+          <option>Gas Bill</option>
+          <option>Internet / Mobile Bill</option>
+          <option>Fuel / Transport</option>
+          <option>Vehicle Maintenance</option>
+          <option>House Maintenance & Repairs</option>
+          <option>Appliance Purchase / Replacement</option>
+          <option>Entertainment</option>
+          <option>Health & Medical</option>
+          <option>Insurance</option>
+          <option>Education / School Fees</option>
+          <option>Savings / Investments</option>
+          <option>Personal Expenses</option>
+          <option>Clothing & Accessories</option>
+          <option>Gifts & Donations</option>
+          <option>Miscellaneous</option>
+        </select>
+        <input type="number" id="amount" placeholder="Amount (₹)" required />
+        <input type="date" id="date" required />
+        <input type="text" id="description" placeholder="Description" />
+        <label><input type="checkbox" id="repair-check" /> Repairs / Big Purchase</label>
+        <button type="submit">Add Expense</button>
+      </form>
+    </section>
+
+    <section class="transaction-section">
+      <h2>Person-to-Person Transaction</h2>
+      <form id="transaction-form">
+        <select id="giver" required>
+          <option value="">Select Giver</option>
+        </select>
+        <select id="receiver" required>
+          <option value="">Select Receiver</option>
+        </select>
+        <input type="number" id="transaction-amount" placeholder="Amount (₹)" required />
+        <button type="submit">Add Transaction</button>
+      </form>
+    </section>
+
+    <section class="filter-section">
+      <h2>Filters</h2>
+      <select id="filter-person">
+        <option value="">All Persons</option>
+      </select>
+      <select id="filter-category">
+        <option value="">All Categories</option>
+      </select>
+      <input type="month" id="filter-month" />
+      <button id="apply-filters">Apply Filters</button>
+      <button id="export-csv">Export CSV</button>
+      <button id="download-pdf">Download PDF Report</button>
+    </section>
+
+    <section class="summary-section">
+      <h2>Summary</h2>
+      <div id="total-monthly"></div>
+      <div id="repair-status"></div>
+      <div id="person-summary"></div>
+      <div id="final-balances"></div>
+      <div class="chart-container">
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </section>
+
+    <section class="table-section">
+      <h2>Expense History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Person</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Repair</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="expense-table-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
